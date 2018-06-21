@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(express.static("public"));
+require("./routes/scrape.js")(app);
 
 // connect to database
 mongoose.Promise = Promise;
@@ -26,7 +27,6 @@ var MONGODB_URI = "mongodb://heroku_xrsc67mr:eudg3cv58fl2svtitvsbs2sagk@ds163410
 MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/web-scraper"
 mongoose.connect(MONGODB_URI)
 
-require("./routes/scrape")(app);
 // require("./routes/html.js")(app);
 
 app.get("/", function (req, res) {
