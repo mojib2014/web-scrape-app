@@ -26,17 +26,20 @@ var MONGODB_URI = "mongodb://heroku_xrsc67mr:eudg3cv58fl2svtitvsbs2sagk@ds163410
 MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/web-scraper"
 mongoose.connect(MONGODB_URI)
 
-// app.get("/", function (req, res) {
-//     res.sendFile(path.join(__dirname, "views/index.html"));
-// });
-
 require("./routes/scrape")(app);
-require("./routes/html.js")(app);
+// require("./routes/html.js")(app);
 
-// app.get("*", function (req, res) {
-//     res.sendFile(path.join(__dirname, "views/index.html"));
-// });
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "views/index.html"));
+});
 
+app.get("/saved/all", function (req, res) {
+    res.sendFile(path.join(__dirname, "views/saved.html"));
+});
+
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "views/index.html"));
+});
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
