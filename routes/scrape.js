@@ -9,7 +9,7 @@ var Save = require("../models/Save.js");
 
 module.exports = function(app) {
     app.get("/scrape", function (req, res) {
-        request("https://www.cnn.com/", function (error, response, html) {
+        request("https://www.nytimes.com/", function (error, response, html) {
 
             // Load the HTML into cheerio and save it to a variable
             // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
