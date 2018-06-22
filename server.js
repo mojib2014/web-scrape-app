@@ -23,8 +23,7 @@ require("./routes/scrape.js")(app);
 require("./routes/html.js")(app);
 // connect to database
 mongoose.Promise = Promise;
-var MONGODB_URI = "mongodb://heroku_9vw8cxb0:dar2nch8fi5e80m7e9rk3vksds@ds143039.mlab.com:43039/heroku_9vw8cxb0";
-MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/web-scraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/web-scraper";
 mongoose.connect(MONGODB_URI);
 
 
