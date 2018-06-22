@@ -3,9 +3,9 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var request = require("request");
 var mongoose = require("mongoose");
-// var Note = require("./models/Note.js");
-// var Article = require("./models/Article.js");
-// var Save = require("./models/Save.js");
+var Note = require("./models/Note.js");
+var Article = require("./models/Article.js");
+var Save = require("./models/Save.js");
 var logger = require("morgan");
 var cheerio = require("cheerio");
 var path = require("path");
@@ -27,7 +27,7 @@ var MONGODB_URI = "mongodb://heroku_9vw8cxb0:dar2nch8fi5e80m7e9rk3vksds@ds143039
 MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/web-scraper"
 mongoose.connect(MONGODB_URI)
 
-// require("./routes/html.js")(app);
+require("./routes/html.js")(app);
 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "views/index.html"));
